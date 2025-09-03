@@ -13,3 +13,38 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# Python
+__pycache__/
+env/
+*.py[cod]
+*.pyo
+*.pyd
+*.env
+*.env.*
+*.venv
+*.egg-info/
+dist/
+build/
+
+# VSCode / IDEs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Logs
+*.log
+
+# macOS
+.DS_Store
+
+# Secrets
+secret_key.txt
+.env
+
+# Optional: pycache and cache folders
+*.cache/
