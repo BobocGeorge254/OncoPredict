@@ -7,8 +7,8 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.oncopredict.R
 import com.example.oncopredict.activities.MainActivity
-import com.example.oncopredict.data.AuthRequest
-import com.example.oncopredict.data.AuthResponse
+import com.example.oncopredict.data.auth.AuthRequest
+import com.example.oncopredict.data.auth.AuthResponse
 import com.example.oncopredict.services.AuthApi
 import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory

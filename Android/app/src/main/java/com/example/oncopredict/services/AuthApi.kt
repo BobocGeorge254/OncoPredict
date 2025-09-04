@@ -1,7 +1,7 @@
 package com.example.oncopredict.services
 
-import com.example.oncopredict.data.AuthRequest
-import com.example.oncopredict.data.AuthResponse
+import com.example.oncopredict.data.auth.AuthRequest
+import com.example.oncopredict.data.auth.AuthResponse
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.POST

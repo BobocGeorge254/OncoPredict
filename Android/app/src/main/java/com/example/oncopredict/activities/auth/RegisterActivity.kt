@@ -6,7 +6,7 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.oncopredict.R
-import com.example.oncopredict.data.AuthRequest
+import com.example.oncopredict.data.auth.AuthRequest
 import com.example.oncopredict.services.AuthApi
 import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
@@ -20,6 +20,7 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var progressBar: ProgressBar
     private lateinit var tvError: TextView
     private lateinit var authApi: AuthApi
+    private lateinit var tvLoginLink: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +33,12 @@ class RegisterActivity : AppCompatActivity() {
         btnRegister = findViewById(R.id.btnRegister)
         progressBar = findViewById(R.id.progressBar)
         tvError = findViewById(R.id.tvError)
+        tvLoginLink = findViewById(R.id.tvLoginLink)
+
+        tvLoginLink.setOnClickListener {
+            val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
+            startActivity(intent)
+        }
 
         val retrofit = Retrofit.Builder()
             .baseUrl("http://10.0.2.2:8000/")
