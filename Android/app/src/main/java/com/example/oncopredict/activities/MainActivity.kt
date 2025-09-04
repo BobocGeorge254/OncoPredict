@@ -1,47 +1,41 @@
 package com.example.oncopredict.activities
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.oncopredict.ui.theme.OncoPredictTheme
+import android.widget.LinearLayout
+import androidx.appcompat.app.AppCompatActivity
+import com.example.oncopredict.R
+import com.example.oncopredict.activities.prediction.FutureActivity
+import com.example.oncopredict.activities.prediction.cervix.CervixActivity
+import com.example.oncopredict.activities.prediction.lung.LungActivity
 
-class MainActivity : ComponentActivity() {
+class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            OncoPredictTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
-            }
+        supportActionBar?.hide()
+        setContentView(R.layout.activity_main)
+
+        val itemLiver: LinearLayout = findViewById(R.id.liver)
+        val itemLungs: LinearLayout = findViewById(R.id.lung)
+        val itemCervix: LinearLayout = findViewById(R.id.cervix)
+        val itemStomach: LinearLayout = findViewById(R.id.stomach)
+        val itemBlood: LinearLayout = findViewById(R.id.blood)
+        val itemOverall: LinearLayout = findViewById(R.id.overall)
+
+        itemLungs.setOnClickListener {
+            startActivity(Intent(this, LungActivity::class.java))
         }
-    }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+        itemCervix.setOnClickListener {
+            startActivity(Intent(this, CervixActivity::class.java))
+        }
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    OncoPredictTheme {
-        Greeting("Android")
+        val futureIntent = Intent(this, FutureActivity::class.java)
+
+        itemLiver.setOnClickListener { startActivity(futureIntent) }
+        itemStomach.setOnClickListener { startActivity(futureIntent) }
+        itemBlood.setOnClickListener { startActivity(futureIntent) }
+        itemOverall.setOnClickListener { startActivity(futureIntent) }
     }
 }

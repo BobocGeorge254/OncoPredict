@@ -1,4 +1,4 @@
-package com.example.oncopredict.data
+package com.example.oncopredict.data.auth
 
 data class AuthRequest(
     val username: String,
