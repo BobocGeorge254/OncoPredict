@@ -9,7 +9,9 @@ import com.example.oncopredict.R
 import com.example.oncopredict.activities.MainActivity
 import com.example.oncopredict.data.auth.AuthRequest
 import com.example.oncopredict.data.auth.AuthResponse
+import com.example.oncopredict.data.auth.AuthSession
 import com.example.oncopredict.services.AuthApi
+import com.example.oncopredict.services.LungApi
 import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -58,6 +60,9 @@ class LoginActivity : AppCompatActivity() {
                     if (response.isSuccessful) {
                         val authResponse = response.body()
                         if (authResponse != null) {
+                            val token = "${authResponse.tokenType} ${authResponse.accessToken}"
+                            AuthSession.token = token
+
                             Toast.makeText(this@LoginActivity, "Welcome, $username!", Toast.LENGTH_SHORT).show()
                             val intent = Intent(this@LoginActivity, MainActivity::class.java)
                             startActivity(intent)

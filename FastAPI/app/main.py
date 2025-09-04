@@ -20,7 +20,7 @@ def login(user: UserLogin):
     if not db_user or not verify_password(user.password, db_user["hashed_password"]):
         raise HTTPException(status_code=401, detail="Incorrect username or password")
     token = create_access_token({"sub": user.username})
-    return {"access_token": token, "token_type": "bearer"}
+    return {"access_token": token, "token_type": "Bearer"}
 
 
 @app.post("/predict-lung")

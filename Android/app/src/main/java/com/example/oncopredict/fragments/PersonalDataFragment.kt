@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Spinner
 import androidx.fragment.app.Fragment
@@ -17,6 +18,10 @@ class PersonalDataFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_personal_data, container, false)
 
         val etAge = view.findViewById<EditText>(R.id.etAge)
+        val cbSmoking = view.findViewById<CheckBox>(R.id.cbSmoking)
+        val cbAlcohol = view.findViewById<CheckBox>(R.id.cbAlcohol)
+        val cbChronicDisease = view.findViewById<CheckBox>(R.id.cbChronicDisease)
+        val cbYellowFingers = view.findViewById<CheckBox>(R.id.cbYellowFingers)
         val btnNext = view.findViewById<Button>(R.id.btnNext)
 
         val spinnerGender: Spinner = view.findViewById(R.id.spinnerGender)
@@ -29,7 +34,16 @@ class PersonalDataFragment : Fragment() {
 
         btnNext.setOnClickListener {
             activity.lungViewModel.age = etAge.text.toString().toInt()
-            activity.lungViewModel.gender = spinnerGender.selectedItemPosition //to fix
+            activity.lungViewModel.gender = spinnerGender.selectedItemPosition
+            activity.lungViewModel.smoking = if (!cbSmoking.isChecked) 1 else 2
+            activity.lungViewModel.alcoholConsuming = if (!cbAlcohol.isChecked) 1 else 2
+            activity.lungViewModel.chronicDisease = if (!cbChronicDisease.isChecked) 1 else 2
+            activity.lungViewModel.yellowFingers = if (!cbYellowFingers.isChecked) 1 else 2
+
+            activity.supportFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainer, SymptomsFragment())
+                .addToBackStack(null) // allows back navigation
+                .commit()
         }
 
         return view
