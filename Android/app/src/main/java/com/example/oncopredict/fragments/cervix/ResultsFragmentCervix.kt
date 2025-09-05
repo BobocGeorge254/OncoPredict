@@ -51,7 +51,6 @@ class ResultsFragmentCervix : Fragment() {
             ) {
                 if (response.isSuccessful) {
                     response.body()?.let {
-                        tvRisk.text = "Risk: ${it.lung_cancer_risk}"
                         tvProbabilityYes.text = "Probability YES: ${"%.2f".format(it.probability_yes * 100)}%"
                         tvProbabilityNo.text = "Probability NO: ${"%.2f".format(it.probability_no * 100)}%"
                     }

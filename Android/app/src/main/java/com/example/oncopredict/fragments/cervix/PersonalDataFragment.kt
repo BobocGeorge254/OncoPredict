@@ -9,6 +9,7 @@ import android.widget.EditText
 import androidx.fragment.app.Fragment
 import com.example.oncopredict.R
 import com.example.oncopredict.activities.prediction.cervix.CervixActivity
+import com.example.oncopredict.utils.PreferenceHelper
 
 class PersonalDataFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -20,13 +21,20 @@ class PersonalDataFragment : Fragment() {
         val etPregnancies = view.findViewById<EditText>(R.id.etPregnancies)
         val btnNext = view.findViewById<Button>(R.id.btnNext)
 
+        val savedAge = PreferenceHelper.getAge(requireContext())
+        if (savedAge != -1) etAge.setText(savedAge.toString())
+
         val activity = requireActivity() as CervixActivity
 
         btnNext.setOnClickListener {
-            activity.cervixViewModel.age = etAge.text.toString().toInt()
+            val age = etAge.text.toString().toInt()
+            activity.cervixViewModel.age = age
+
             activity.cervixViewModel.numberOfSexualPartners = etSexPartners.text.toString().toInt()
             activity.cervixViewModel.firstSexualIntercourse = etFirstSex.text.toString().toInt()
             activity.cervixViewModel.numOfPregnancies = etPregnancies.text.toString().toInt()
+
+            PreferenceHelper.saveAge(requireContext(), age)
 
             activity.supportFragmentManager.beginTransaction()
                 .replace(R.id.fragmentContainer, SmokingFragment())
