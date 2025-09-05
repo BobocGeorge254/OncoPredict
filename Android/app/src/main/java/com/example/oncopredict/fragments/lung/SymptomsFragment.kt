@@ -1,4 +1,4 @@
-package com.example.oncopredict.fragments
+package com.example.oncopredict.fragments.lung
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,7 +14,7 @@ class SymptomsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_symptoms, container, false)
+        val view = inflater.inflate(R.layout.fragment_lung_symptoms, container, false)
 
         val cbCough = view.findViewById<CheckBox>(R.id.cbCough)
         val cbChestPain = view.findViewById<CheckBox>(R.id.cbChestPain)
@@ -35,7 +35,7 @@ class SymptomsFragment : Fragment() {
             activity.lungViewModel.wheezing = if (!cbWheezing.isChecked) 1 else 2
 
             activity.supportFragmentManager.beginTransaction()
-                .replace(R.id.fragmentContainer, ResultsFragment())
+                .replace(R.id.fragmentContainer, ResultsFragmentLung())
                 .addToBackStack(null)
                 .commit()
         }

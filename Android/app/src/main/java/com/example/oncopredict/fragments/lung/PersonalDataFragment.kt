@@ -1,4 +1,4 @@
-package com.example.oncopredict.fragments
+package com.example.oncopredict.fragments.lung
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,7 +15,7 @@ import com.example.oncopredict.activities.prediction.lung.LungActivity
 
 class PersonalDataFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_personal_data, container, false)
+        val view = inflater.inflate(R.layout.fragment_lung_personal_data, container, false)
 
         val etAge = view.findViewById<EditText>(R.id.etAge)
         val cbSmoking = view.findViewById<CheckBox>(R.id.cbSmoking)

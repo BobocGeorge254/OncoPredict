@@ -5,7 +5,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.oncopredict.R
 import com.example.oncopredict.data.viewmodel.LungViewModel
-import com.example.oncopredict.fragments.PersonalDataFragment
+import com.example.oncopredict.fragments.lung.PersonalDataFragment
 
 class LungActivity : AppCompatActivity() {
 

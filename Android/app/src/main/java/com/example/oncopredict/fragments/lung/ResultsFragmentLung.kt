@@ -1,4 +1,4 @@
-package com.example.oncopredict.fragments
+package com.example.oncopredict.fragments.lung
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.oncopredict.R
 import com.example.oncopredict.data.auth.AuthSession
-import com.example.oncopredict.data.prediction.LungPatientData
 import com.example.oncopredict.data.prediction.PredictionResponse
 import com.example.oncopredict.data.viewmodel.LungViewModel
 import com.example.oncopredict.services.LungApi
@@ -20,21 +19,21 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class ResultsFragment : Fragment() {
+class ResultsFragmentLung : Fragment() {
 
     private lateinit var lungViewModel: LungViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_results, container, false)
+        val view = inflater.inflate(R.layout.fragment_lung_results, container, false)
 
         lungViewModel = ViewModelProvider(requireActivity()).get(LungViewModel::class.java)
 
-        val tvRisk = view.findViewById<TextView>(R.id.tvRisk)
-        val tvProbabilityYes = view.findViewById<TextView>(R.id.tvProbabilityYes)
-        val tvProbabilityNo = view.findViewById<TextView>(R.id.tvProbabilityNo)
-        val btnTryAgain = view.findViewById<Button>(R.id.btnTryAgain)
+        val tvRisk = view.findViewById<TextView>(R.id.tvRiskLung)
+        val tvProbabilityYes = view.findViewById<TextView>(R.id.tvProbabilityYesLung)
+        val tvProbabilityNo = view.findViewById<TextView>(R.id.tvProbabilityNoLung)
+        val btnTryAgain = view.findViewById<Button>(R.id.btnTryAgainLung)
 
         val retrofit = Retrofit.Builder()
             .baseUrl("http://10.0.2.2:8000/")
